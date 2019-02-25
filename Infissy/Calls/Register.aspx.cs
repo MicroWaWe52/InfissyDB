@@ -11,7 +11,7 @@ namespace Infissy.Calls
             var fname = Request.QueryString["fname"];
             var email = Request.QueryString["email"];
             var result = DBcaller.Register(usern, passw, fname, email);
-            Response.Write(result);
+            Response.Write($"#{result}#");
         }
     }
 }

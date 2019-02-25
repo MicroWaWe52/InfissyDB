@@ -1,5 +1,6 @@
 ﻿using Infissy.DBEntities;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.OleDb;
 
@@ -14,7 +15,7 @@ namespace Infissy
             var user = new Utente(usern, passw, fName, email);
             var conn = new OleDbConnection(cs);
             conn.Open();
-            int rows=0;
+            int rows = 0;
             try
             {
                 var registerComm = new OleDbCommand("INSERT INTO Utenti ( usern, passw, fname, email ) " +
@@ -27,7 +28,7 @@ namespace Infissy
                 conn.Close();
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 conn.Close();
                 conn.Dispose();
@@ -60,6 +61,53 @@ namespace Infissy
                 conn.Dispose();
             }
             return (user != null) ? user : null;
+        }
+
+        public static List<Carta> GetCarteFromMazzo(int idMazzo)
+        {
+            var conn = new OleDbConnection(cs);
+            List<Carta> mazzo = new List<Carta>();
+            conn.Open();
+            try
+            {
+                var getCarte = new OleDbCommand(
+                    "SELECT Carte.* , MazzoCarta.IDMazzoCarta " +
+                    "FROM Carte " +
+                    "INNER JOIN MazzoCarta " +
+                    "ON Carte.IDCard = MazzoCarta.CartaId " +
+                   $"WHERE MazzoCarta.MazzoID = {idMazzo};",
+                    conn);
+
+
+                var reader = getCarte.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var IdCa = (int)reader[0];
+                        var Tite = reader[1].ToString();
+                        var Desc = reader[2].ToString();
+                        var ReCy = (int)reader[3];
+                        var Effe = reader[4].ToString();
+                        var Type = (int)reader[5];
+                        var Pval = (int)reader[6];
+                        var Prog = (bool)reader[7];
+                        var Popu = (int)reader[8];
+                        var Mate = (int)reader[9];
+                        var Mony = (int)reader[10];
+                        var IDMC = (int)reader[11];
+                        mazzo.Add(new Carta(IdCa, Tite, Desc, ReCy, Effe, Type, Pval, Prog, Popu, Mate, Mony,IDMC));
+                    }
+
+                }
+                return mazzo;
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
         }
 
     }
