@@ -17,5 +17,9 @@ namespace Infissy
             }
             return mazzoString;
         }
+        public static int ToInt(this string str)
+        {           
+           return int.Parse(str);
+        }
     }
 }

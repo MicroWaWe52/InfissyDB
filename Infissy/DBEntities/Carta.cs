@@ -7,7 +7,7 @@ namespace Infissy.DBEntities
 {
     public class Carta
     {
-        public Carta(int iDCard, string title, string description, int referenceCity, string effects, int type, int progressValue, bool progress, int population, int firstMaterial, int money,int iDMazzoCarta)
+        public Carta(int iDCard, string title, string description, int referenceCity, string effects, int type,int absoluteValue, int progressValue, bool progress, int population, int firstMaterial, int money,int iDMazzoCarta)
         {
             IDCard = iDCard;
             Title = title ?? throw new ArgumentNullException(nameof(title));
@@ -15,6 +15,7 @@ namespace Infissy.DBEntities
             ReferenceCity = referenceCity;
             Effects = effects ?? throw new ArgumentNullException(nameof(effects));
             Type = type;
+            AbsoluteValue = absoluteValue;
             ProgressValue = progressValue;
             Progress = progress;
             Population = population;
@@ -35,10 +36,11 @@ namespace Infissy.DBEntities
         public int FirstMaterial { get; set; }
         public int Money { get; set; }
         public int IDMazzoCarta { get; set; }
+        public int AbsoluteValue { get; set; }
 
         public override string ToString()
         {
-            return $"{IDMazzoCarta};{IDCard};{Title};{Description};{ReferenceCity};{Effects};{Type};{ProgressValue};{Progress};{Population};{FirstMaterial};{Money};";
+            return $"{IDMazzoCarta};{IDCard};{Title};{Description};{ReferenceCity};{Effects};{Type};{AbsoluteValue};{ProgressValue};{Progress};{Population};{FirstMaterial};{Money};";
         }
 
         public static implicit operator string(Carta c)

@@ -69,6 +69,9 @@
     <Content Include="Calls\GCFM.aspx" />
     <Content Include="Calls\Login.aspx" />
     <Content Include="Calls\Register.aspx" />
+    <Content Include="Matmak\AddQueue.aspx" />
+    <Content Include="Matmak\AskQueue.aspx" />
+    <Content Include="Matmak\EndQueue.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -90,6 +93,7 @@
     </Compile>
     <Compile Include="DBcaller.cs" />
     <Compile Include="DBEntities\Carta.cs" />
+    <Compile Include="DBEntities\QueueUser.cs" />
     <Compile Include="DBEntities\Utente.cs" />
     <Compile Include="Calls\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -99,6 +103,27 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExMethods.cs" />
+    <Compile Include="Matmak\AddQueue.aspx.cs">
+      <DependentUpon>AddQueue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Matmak\AddQueue.aspx.designer.cs">
+      <DependentUpon>AddQueue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Matmak\AskQueue.aspx.cs">
+      <DependentUpon>AskQueue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Matmak\AskQueue.aspx.designer.cs">
+      <DependentUpon>AskQueue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Matmak\EndQueue.aspx.cs">
+      <DependentUpon>EndQueue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Matmak\EndQueue.aspx.designer.cs">
+      <DependentUpon>EndQueue.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
